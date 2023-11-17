@@ -86,6 +86,8 @@
             <div class='alert alert-success' role='alert'>
                 New record has been created
             </div>" ;
+            mysqli_close($conn);
+            header("Location: stock.php");
        }else  {
             echo "
             <div class='alert alert-danger' role='alert'>
@@ -95,7 +97,6 @@
     }
 
     // close the connection
-    mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>

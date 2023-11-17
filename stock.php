@@ -64,7 +64,7 @@
         <div class='headline'>
             <h1>Books & more</h1>
         </div>
-        <div class='row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-xs-1' id='result'>
+        <div class='row row-cols-xl-5 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-xs-1' id='result'>
             <?= $cards ?>
         </div>
     </div>
