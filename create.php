@@ -38,6 +38,10 @@ if(mysqli_num_rows($resultPublisher) > 0) {
     $publishers = "<option value=''>No data found</option>";
 }
 
+// alerts
+$createSuccess = false;
+$createFailure = false;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the foreign key values from the POST data
     $fk_type = $_POST['type'];
@@ -52,22 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $publish_date = $_POST["publishDate"];
     
         $sql = "INSERT INTO `stock`(`title`, `img`, `isbn`, `description`, `fk_type`, `fk_author`, `fk_publisher`, `publish_date`) VALUES ('$title', '$img[0]', '$isbn','$description','$fk_type','$fk_author','$fk_publisher','$publish_date')";
-        if (mysqli_query($conn, $sql)) {
-            echo "
-                <div class='alert alert-success' role='alert'>
-                    New dish has been created
-                </div>";
-        } else {
-            echo "
-                <div class='alert alert-danger' role='alert'>
-                    error found
-                </div>";
+        
+        if (mysqli_query($conn, $sql)){
+            $createSuccess = true;
+            mysqli_close($conn);
+       }else  {
+            $createFailure = true;
         }
     }
 }
-
-// close the connection
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +79,8 @@ mysqli_close($conn);
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/style.css">
+    <!-- SweetAlert library -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -111,7 +110,7 @@ mysqli_close($conn);
             </label>
             <!-- description -->
             <label class="form-label">
-                <h5>Description: </h5>:
+                <h5>Description: </h5>
                 <input type="text" name="description" class="form-control">
             </label>
             <!-- Type Dropdown -->
@@ -144,6 +143,34 @@ mysqli_close($conn);
             <input type="submit" value="Create" name="create" class="btn btn-success">
         </form>
     </div>
+
+    <!-- SweetAlert for Success -->
+    <?php if ($createSuccess): ?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location = "stock.php";
+        });
+    </script>
+    <?php endif; ?>
+    
+    <!-- SweetAlert for Failure -->
+    <?php if ($createFailure): ?> 
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        }).then(function() {
+            window.location = "stock.php"; // Or another appropriate action
+        });
+    </script>
+    <?php endif; ?>
 
     <?php require_once 'components/footer.php'; ?>
 

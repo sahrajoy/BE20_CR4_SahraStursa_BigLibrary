@@ -61,6 +61,10 @@
         $publishers = "<option value=''>No data found</option>";
     }
 
+    // alerts
+    $updateSuccess = false;
+    $updateFailure = false;
+
     if(isset ($_POST["update"])){
         $title = $_POST["title"];
         $img = fileUpload($_FILES["img"]);
@@ -82,17 +86,10 @@
             }
 
        if (mysqli_query($conn, $sql)){
-            echo "
-            <div class='alert alert-success' role='alert'>
-                New record has been created
-            </div>" ;
+            $updateSuccess = true;
             mysqli_close($conn);
-            header("Location: stock.php");
        }else  {
-            echo "
-            <div class='alert alert-danger' role='alert'>
-                error found
-            </div>" ;
+            $updateFailure = true;
         }
     }
 
@@ -109,6 +106,8 @@
     <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"  rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"  crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/style.css">
+    <!-- SweetAlert library -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <?php require_once 'components/navbar.php'; ?>
@@ -164,6 +163,34 @@
             <input type="submit" value="Update" name="update" class="btn btn-success">
         </form>
     </div>
+
+    <!-- SweetAlert for Success -->
+    <?php if ($updateSuccess): ?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location = "stock.php";
+        });
+    </script>
+    <?php endif; ?>
+    
+    <!-- SweetAlert for Failure -->
+    <?php if ($updateFailure): ?> 
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        }).then(function() {
+            window.location = "stock.php"; // Or another appropriate action
+        });
+    </script>
+    <?php endif; ?>
 
     <?php require_once 'components/footer.php'; ?>
 

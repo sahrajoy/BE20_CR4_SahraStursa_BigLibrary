@@ -12,12 +12,15 @@
         }
 
         $sql = "DELETE FROM `stock` WHERE id_stock=$id";
-        mysqli_query($conn, $sql);
-
+        if (mysqli_query($conn, $sql)) {
+            // Redirect with success message
+            header("Location: stock.php?delete=success");
+        } else {
+            // Redirect with error message
+            header("Location: stock.php?delete=error");
+        }
         mysqli_close($conn);
-        header("Location: stock.php");
     }
     else{
-        mysqli_close($conn);
         header("Location: stock.php");
     }
