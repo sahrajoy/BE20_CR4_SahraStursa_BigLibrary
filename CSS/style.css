@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&display=swap');
+
+body{
+    background-color: white;
+    
+    /* navbar */
+    nav {
+        padding: 0%;
+        background-color: #F5F5F1;
+    }
+    
+    nav .logo {
+        width: 10vh;
+        height: 10vh;
+    }
+    
+    /* footer */
+    div {
+        background-color: #6F1D1B;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        color: rgb(255, 255, 255);
+        font-size: small;
+    }
+    
+    /* hero section */
+    #hero {
+        height: 500px;
+        background-image: url("../assets/banner.jpg");
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #hero #overlay {
+        position: absolute;
+        background-color: #F5F5F1;
+        opacity: 0.9;
+        padding: 40px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 30px;
+        color: #432818;
+        width: 30%;
+        min-width: 350px;
+    }
+    
+    #hero #overlay h1 {
+        font-family: 'Source Serif 4', serif;
+    }
+    
+    #hero #overlay #btns {
+        min-width: 300px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    #hero #overlay #btns .btn {
+        width: 13vh;
+        background-color: #BB9457;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    /* about */
+    #description {
+        padding: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    #description h2 {
+        font-family: 'Source Serif 4', serif;
+        color: #BB9457;
+    }
+    
+    #description .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    
+    #description #img {
+        width: 35vh;
+        border-radius: 50vh;
+    }
+    
+    #description #content p {
+        padding: 3vh 0;
+        margin: 0;
+    }
+    
+    /* menu */
+    .dishes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .dishes #headline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2vh;
+        width: 100%;
+        background-color: #BB9457;
+    }
+    
+    .dishes #headline h1 {
+        font-family: 'Source Serif 4', serif;
+        color: white;
+    }
+    
+    .dishes .row {
+        margin: 3vh 1vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .dishes .card {
+        height: 50vh;
+        margin: 3px 0;
+    }
+    
+    .dishes .row .card #img {
+        padding: 15px;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .dishes .row .card #img .card-img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+    
+    .dishes .row .card .card-body .container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .dishes .row .card .card-body .container .btn {
+        background-color: #BB9457;
+        border: none;
+        color: white;
+    }
+    
+    /* details */
+    .details {
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .details #headline {
+        padding: 10px;
+        font-family: 'Source Serif 4', serif;
+        color: #BB9457;
+    }
+    
+    .details .btn {
+        margin-top: 10px;
+        width: 13vh;
+        background-color: #BB9457;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    .details #cardDiv .card img {
+        padding: 10px;
+        border: none;
+        width: 100%;
+    }
+    
+    .details #cardDiv .card {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    /* create */
+    .containerCreate .createForm {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .containerCreate .createForm .btn {
+        width: 13vh;
+        background-color: #BB9457;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    /* update */
+    .containerUpdate .updateForm {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .containerUpdate .updateForm .btn {
+        width: 13vh;
+        background-color: #BB9457;
+        border: none;
+        border-radius: 5px;
+    }
+
+}
